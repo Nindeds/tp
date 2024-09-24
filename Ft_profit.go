@@ -1,4 +1,4 @@
-package src
+package srcs
 
 func Ft_profit(prices []int) int {
 	if len(prices) == 0 {

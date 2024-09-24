@@ -1,4 +1,4 @@
-package poulpe
+package srcs
 
 import "math"
 

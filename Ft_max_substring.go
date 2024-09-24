@@ -1,20 +1,30 @@
-package poulpe
-
-import "fmt"
+package srcs
 
 func Ft_max_substring(s string) int {
-	var Highest rune
-	var lasti int
-	StringToRune := []rune(s)
-	for i := 1; i < len(s)-1; i++ {
-		fmt.Println("pd", string(StringToRune[i]))
-		if StringToRune[i-1] >= StringToRune[i] && StringToRune[i-1] > Highest && StringToRune[i] > Highest {
-			Highest = StringToRune[i-1]
-			fmt.Println("highest", string(Highest))
-			lasti += i
-		} else {
-			continue
+	// une carte pour stocker l'index des caractères
+	dernierIndice := make(map[byte]int)
+	longueurMax := 0
+	debut := 0
+
+	// parcours de la chaîne de caractères
+	for fin := 0; fin < len(s); fin++ {
+		caractere := s[fin]
+
+		// si le caractère a déjà été vu et est dans la fenêtre actuelle
+		if indice, existe := dernierIndice[caractere]; existe && indice >= debut {
+			// déplacer le début juste après l'index du dernier caractère répété
+			debut = indice + 1
+		}
+
+		// mettre à jour la position du caractère
+		dernierIndice[caractere] = fin
+
+		// calculer la longueur de la sous-chaîne actuelle sans répétition
+		longueurActuelle := fin - debut + 1
+		if longueurActuelle > longueurMax {
+			longueurMax = longueurActuelle
 		}
 	}
-	return lasti
+
+	return longueurMax
 }

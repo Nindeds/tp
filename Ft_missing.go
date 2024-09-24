@@ -1,4 +1,4 @@
-package poulpe
+package srcs
 
 func Ftmissing(nums []int) int {
 	nombre := make(map[int]bool)

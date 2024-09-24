@@ -1,4 +1,4 @@
-package poulpe
+package srcs
 
 func Ft_coin(coins []int, amount int) int {
 	x := 0
